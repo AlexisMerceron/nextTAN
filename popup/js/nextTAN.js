@@ -6,8 +6,9 @@ $(document).ready(function() {
             console.log(field.libelle)
         })
     }).then(function() {
-        $("#tags").autocomplete({
+        $("#arret").autocomplete({
             source: arrets
         });
     });
+
 });
