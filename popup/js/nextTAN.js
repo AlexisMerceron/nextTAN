@@ -13,7 +13,7 @@ $(document).ready(function() {
                   var min = parseInt(depart.temps.replace(' mn',''));
                   next = new Date(d.getTime() + (min * 60000));
                 }
-                alert(next);
+                $('#list').append('<li>'+next+'</li>');
             })
         })
     };
@@ -34,6 +34,7 @@ $(document).ready(function() {
     // Récupération des ligne passant par l'arret (code)
     function getLines(code) {
         var arrets = [];
+        $('#ligne').empty()
         $.getJSON('http://open_preprod.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
             $.each(data, function(i, ligne) {
                 if (arrets.indexOf(ligne.arret.codeArret) === -1) {
