@@ -7,13 +7,13 @@
   "description": "Donne les horaires des prochains bus de la TAN",
 
   "browser_action": {
-    "default_icon": "icons/nextTAN-black-48.svg",
+    "default_icon": "icons/nextTAN-black.svg",
     "default_title": "nextTAN",
     "default_popup": "popup/main.html"
   },
 
   "icons": {
-    "48": "icons/nextTAN-black-48.svg"
+    "48": "icons/nextTAN-black.svg"
   },
 
   "content_scripts": [
