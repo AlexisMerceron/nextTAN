@@ -4,14 +4,17 @@
   "name": "nextTAN",
   "version": "0.1",
 
-  "description": "",
+  "description": "Donne les horaires des prochains bus de la TAN",
 
   "icons": {
-    "48": "icons/nexTAN-white-48.svg"
+    "48": "icons/nextTAN-black-48.svg"
   },
 
-  "content_scripts":{
-    "js": ["nextTAN.js"]
-  }
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["nextTAN.js"]
+    }
+  ]
 
 }
