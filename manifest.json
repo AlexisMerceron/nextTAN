@@ -14,13 +14,6 @@
 
   "icons": {
     "48": "icons/nextTAN-black.svg"
-  },
-
-  "content_scripts": [
-    {
-      "matches": ["*://*/*"],
-      "js": ["nextTAN.js"]
-    }
-  ]
-
+  }
+  
 }
