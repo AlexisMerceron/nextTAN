@@ -1,15 +1,13 @@
 $(document).ready(function() {
-    var arrets = [];
-    $.getJSON('http://open_preprod.tan.fr/ewp/arrets.json').done(function(data) {
-        $.each(data, function(i, field) {
-            // arrets.push(field.libelle);
-            // console.log(field.libelle)
-            $('#arret').append('<option value="' + field.libelle + '">')
+    navigator.geolocation.getCurrentPosition(function(position) {
+        lat = ('' + position.coords.latitude).replace('.', ',');
+        long = ('' + position.coords.longitude).replace('.', ',');
+        alert('http://open_preprod.tan.fr/ewp/arrets.json/' + lat + '/' + long);
+        $.getJSON('http://open_preprod.tan.fr/ewp/arrets.json/' + lat + '/' + long).done(function(data) {
+            $.each(data, function(i, field) {
+                var option = '<option data-value="' + field.codeLieu + '" value="' + field.libelle + '">';
+                $('#arret').append(option);
+            })
         })
-    }).then(function() {
-        $("#arret").autocomplete({
-            source: arrets
-        });
     });
-
 });
