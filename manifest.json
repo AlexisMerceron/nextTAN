@@ -1,0 +1,15 @@
+{
+
+  "manifest_version": 2,
+  "name": "nextTAN",
+  "version": "0.1",
+
+  "description": "",
+
+  "icons": {
+    "48": "icons/nexTAN-white-48.svg"
+  },
+
+  
+
+}
