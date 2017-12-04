@@ -10,6 +10,8 @@
     "48": "icons/nexTAN-white-48.svg"
   },
 
-  
+  "content_scripts":{
+    "js": ["nextTAN.js"]
+  }
 
 }
