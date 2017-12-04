@@ -17,7 +17,7 @@ fetch(req).then(function(res) {
 $(document).ready(function() {
     $.getJSON('http://open_preprod.tan.fr/ewp/arrets.json').done(function(data) {
         $.each(data, function(i, field){
-            $("ul").append('<li>' + field.libelle + '</li>');
+            $("select").append('<option>' + field.libelle + '</option>');
         })
     });
 });
