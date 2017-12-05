@@ -33,16 +33,32 @@ $(document).ready(function() {
 
     // Récupération des ligne passant par l'arret (code)
     function getLines(code) {
+        var lignes = [];
         var arrets = [];
+        var terminus = [];
         $('#ligne').empty()
         $.getJSON('http://open_preprod.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
             $.each(data, function(i, ligne) {
                 if (arrets.indexOf(ligne.arret.codeArret) === -1) {
-                    var option = '<option data-value="' + ligne.arret.codeArret + '" value="' + ligne.ligne.numLigne + ' - ' + ligne.terminus + '">';
-                    $('#ligne').append(option);
+                    lignes.push(ligne.ligne.numLigne);
+                    arrets.push(ligne.arret.codeArret);
+                    terminus.push([ligne.terminus]);
                 }
-            })
-        })
+                else {
+                    if (terminus[arrets.indexOf(ligne.arret.codeArret)].indexOf(ligne.terminus) === -1) {
+                        terminus[arrets.indexOf(ligne.arret.codeArret)].push(ligne.terminus);
+                    }
+                }
+            });
+            $.each(arrets, function(i, arret) {
+                var option = '<option data-value="' + arret + '" value="' + lignes[i] + ' - ';
+                $.each(terminus[arrets.indexOf(arret)], function(i, term) {
+                    option += term + ' / ';
+                });
+                option = option.slice(0, -3) + '">';
+                $('#ligne').append(option);
+            });
+        });
     }
 
     // Détect le choix de l'arret et génération de la liste des lignes passant par cet arret
