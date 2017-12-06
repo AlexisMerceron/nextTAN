@@ -3,32 +3,32 @@
 $(document).ready(function() {
 
     // Récupération des prochains départs
-    function getHoraires(code){
-        var depart =[];
+    function getHoraires(code) {
+        var depart = [];
         var d = new Date();
         $.getJSON('http://open_preprod.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
             $.each(data, function(i, depart) {
                 var next = depart.temps;
-                if (!isNaN(parseFloat(depart.temps))){
-                  var min = parseInt(depart.temps.replace(' mn',''));
-                  next = new Date(d.getTime() + (min * 60000));
+                if (!isNaN(parseFloat(depart.temps))) {
+                    var min = parseInt(depart.temps.replace(' mn', ''));
+                    next = new Date(d.getTime() + (min * 60000));
                 }
-                $('#list').append('<li>'+next+'</li>');
+                $('#list').append('<li>' + next.getHours() + ':' + next.getMinutes() + ' (' + depart.temps + ')' + '</li>');
             })
         })
     };
 
     // Détect le choix de la ligne et génération de la liste des prochains départs
-    $('#choix_ligne').on('input',function(){
-      var val = document.getElementById("choix_ligne").value
-      var opts = document.getElementById('ligne').childNodes;
-      for (var i = 0; i < opts.length; i++) {
-          if (opts[i].value === val) {
-              var code = opts[i].getAttribute('data-value');
-              getHoraires(code);
-              break;
-          }
-      }
+    $('#choix_ligne').on('input', function() {
+        var val = document.getElementById("choix_ligne").value
+        var opts = document.getElementById('ligne').childNodes;
+        for (var i = 0; i < opts.length; i++) {
+            if (opts[i].value === val) {
+                var code = opts[i].getAttribute('data-value');
+                getHoraires(code);
+                break;
+            }
+        }
     });
 
     function getLines(code) {
@@ -41,8 +41,7 @@ $(document).ready(function() {
                     obj.ligne = ligne.ligne.numLigne;
                     obj.terminus = [ligne.terminus];
                     lignes[ligne.arret.codeArret] = obj;
-                }
-                else {
+                } else {
                     if (lignes[ligne.arret.codeArret].terminus.indexOf(ligne.terminus) === -1) {
                         lignes[ligne.arret.codeArret].terminus.push(ligne.terminus);
                     }
@@ -57,6 +56,14 @@ $(document).ready(function() {
                 console.log(option);
                 $('#ligne').append(option);
             }
+
+            var unordered_options = $("#ligne option");
+            unordered_options.sort(function(a, b) {
+                if (a.value > b.value) return 1;
+                if (a.value < b.value) return -1;
+                return 0;
+            })
+            $("#ligne").empty().append(unordered_options);
         });
     }
 
