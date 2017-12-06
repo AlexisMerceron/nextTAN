@@ -31,33 +31,32 @@ $(document).ready(function() {
       }
     });
 
-    // Récupération des ligne passant par l'arret (code)
     function getLines(code) {
-        var lignes = [];
-        var arrets = [];
-        var terminus = [];
+        var lignes = {};
         $('#ligne').empty()
         $.getJSON('http://open_preprod.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
             $.each(data, function(i, ligne) {
-                if (arrets.indexOf(ligne.arret.codeArret) === -1) {
-                    lignes.push(ligne.ligne.numLigne);
-                    arrets.push(ligne.arret.codeArret);
-                    terminus.push([ligne.terminus]);
+                if (!(ligne.arret.codeArret in lignes)) {
+                    var obj = new Object();
+                    obj.ligne = ligne.ligne.numLigne;
+                    obj.terminus = [ligne.terminus];
+                    lignes[ligne.arret.codeArret] = obj;
                 }
                 else {
-                    if (terminus[arrets.indexOf(ligne.arret.codeArret)].indexOf(ligne.terminus) === -1) {
-                        terminus[arrets.indexOf(ligne.arret.codeArret)].push(ligne.terminus);
+                    if (lignes[ligne.arret.codeArret].terminus.indexOf(ligne.terminus) === -1) {
+                        lignes[ligne.arret.codeArret].terminus.push(ligne.terminus);
                     }
                 }
             });
-            $.each(arrets, function(i, arret) {
-                var option = '<option data-value="' + arret + '" value="' + lignes[i] + ' - ';
-                $.each(terminus[arrets.indexOf(arret)], function(i, term) {
+            for (var ligne in lignes) {
+                var option = '<option data-value="' + ligne + '" value="' + lignes[ligne].ligne + ' - ';
+                $.each(lignes[ligne].terminus, function(i, term) {
                     option += term + ' / ';
                 });
                 option = option.slice(0, -3) + '">';
+                console.log(option);
                 $('#ligne').append(option);
-            });
+            }
         });
     }
 
