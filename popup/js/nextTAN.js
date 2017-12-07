@@ -2,18 +2,29 @@
 
 $(document).ready(function() {
 
+    function sortOptions(id) {
+        var unordered_options = $("#" + id + " option");
+        unordered_options.sort(function(a, b) {
+            if (a.value > b.value) return 1;
+            if (a.value < b.value) return -1;
+            return 0;
+        })
+        $("#" + id).empty().append(unordered_options);
+    }
+
     // Récupération des prochains départs
     function getHoraires(code) {
         var depart = [];
         var d = new Date();
+        $('#list').empty()
         $.getJSON('http://open_preprod.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
             $.each(data, function(i, depart) {
-                var next = depart.temps;
+                var next = d;
                 if (!isNaN(parseFloat(depart.temps))) {
                     var min = parseInt(depart.temps.replace(' mn', ''));
                     next = new Date(d.getTime() + (min * 60000));
                 }
-                $('#list').append('<li>' + next.getHours() + ':' + next.getMinutes() + ' (' + depart.temps + ')' + '</li>');
+                $('#list').append('<li>' + (next.getHours() <= 9 ? '0' + next.getHours() : next.getHours())  + ':' + (next.getMinutes() <= 9 ? '0' + next.getMinutes() : next.getMinutes()) + ' (' + depart.temps + ')' + '</li>');
             })
         })
     };
@@ -57,13 +68,7 @@ $(document).ready(function() {
                 $('#ligne').append(option);
             }
 
-            var unordered_options = $("#ligne option");
-            unordered_options.sort(function(a, b) {
-                if (a.value > b.value) return 1;
-                if (a.value < b.value) return -1;
-                return 0;
-            })
-            $("#ligne").empty().append(unordered_options);
+            sortOptions('ligne')
         });
     }
 
@@ -89,6 +94,7 @@ $(document).ready(function() {
                 var option = '<option data-value="' + field.codeLieu + '" value="' + field.libelle + '">';
                 $('#arret').append(option);
             })
+            sortOptions('arret')
         })
     });
 });
