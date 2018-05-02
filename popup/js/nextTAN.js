@@ -24,6 +24,7 @@ $(document).ready(function() {
                     var min = parseInt(depart.temps.replace(' mn', ''));
                     next = new Date(d.getTime() + (min * 60000));
                 }
+                $("label").show();
                 $('#list').append('<li><div>' + (next.getHours() <= 9 ? '0' + next.getHours() : next.getHours())  + ':' + (next.getMinutes() <= 9 ? '0' + next.getMinutes() : next.getMinutes()) + '</div><div class="hours">' + depart.temps + '</div></li>');
             })
         })

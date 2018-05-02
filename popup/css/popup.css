@@ -1,12 +1,11 @@
 body {
-    width: 250px;
-    height: 500px;
+
     font-family: "frutiger_ltlight", Arial, "Helvetica Neue", Helvetica, "Bitstream Vera Sans", sans-serif, Arial, "Helvetica Neue", Helvetica, "Bitstream Vera Sans", sans-serif;
     border-bottom: 5px solid #31aa4e;
 }
 
 input[type=text], select {
-    width: 100%;
+    width: 250;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -36,6 +35,7 @@ li div {
 
 label {
     padding-top: 5px;
+    display: none;
 }
 
 .loading {

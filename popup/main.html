@@ -9,16 +9,21 @@
   </head>
 
   <body>
-        <p>Choix de l'arrêt :</p>
-        <select type="text" id="choix_arret" list="arret" oninput="onInput()" disabled>
-        <datalist id="arret"></datalist>
-        <p>Choix de la ligne et du terminus :</p>
-        <input type="text" id="choix_ligne" list="ligne" oninput="onInput()" disabled>
-        <datalist id="ligne"></datalist>
+        <div>
+            <p>Choix de l'arrêt :</p>
+            <input type="text" id="choix_arret" list="arret" oninput="onInput()" disabled>
+            <datalist id="arret"></datalist>
+        </div>
+        <div>
+            <p>Choix de la ligne et du terminus :</p>
+            <input type="text" id="choix_ligne" list="ligne" oninput="onInput()" disabled>
+            <datalist id="ligne"></datalist>
+        </div>
         <!--<imput type="text" id="terminus">-->
-
-        <label> Prochains départs : </label>
-        <ul id="list"></ul>
+        <div>
+            <label> Prochains départs : </label>
+            <ul id="list"></ul>
+        </div>
 
   </body>
 
