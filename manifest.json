@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "nextTAN",
-  "version": "1.0",
+  "version": "1.1",
 
   "description": "Donne les horaires des prochains bus de la TAN",
 
@@ -16,8 +16,7 @@
     "48": "icons/nextTAN-black.svg"
 },
   "permissions": [
-    "https://*/*",
-    "http://*/*",
+    "http://open_preprod.tan.fr/*",
     "geolocation"
   ]
 
