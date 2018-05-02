@@ -1,22 +1,22 @@
 <html>
   <head>
-      <meta charset="utf-8"/>
-      <script src="js/jQuery.min.js"></script>
-      <script src="js/jQuery-ui.min.js"></script>
-      <script src="js/nextTAN.js"></script>
-      <link rel="stylesheet" href="css/jquery-ui.min.css"/>
-      <link rel="stylesheet" href="css/popup.css"/>
+        <meta charset="utf-8"/>
+        <script src="js/jQuery.min.js"></script>
+        <script src="js/jQuery-ui.min.js"></script>
+        <script src="js/nextTAN.js"></script>
+        <link rel="stylesheet" href="css/jquery-ui.min.css"/>
+        <link rel="stylesheet" href="css/popup.css"/>
   </head>
 
   <body>
-      <input type="text" id="choix_arret" list="arret" oninput="onInput()">
-      <datalist id="arret"></datalist>
-      <input type="text" id="choix_ligne" list="ligne" oninput="onInput()">
-      <datalist id="ligne"></datalist>
-      <!--<imput type="text" id="terminus">-->
+        <input type="text" id="choix_arret" list="arret" oninput="onInput()" disabled>
+        <datalist id="arret"></datalist>
+        <input type="text" id="choix_ligne" list="ligne" oninput="onInput()" disabled>
+        <datalist id="ligne"></datalist>
+        <!--<imput type="text" id="terminus">-->
 
-      <label> Prochain départ : </label>
-      <ul id="list"></ul>
+        <label> Prochains départs : </label>
+        <ul id="list"></ul>
 
   </body>
 

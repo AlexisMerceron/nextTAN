@@ -24,7 +24,7 @@ $(document).ready(function() {
                     var min = parseInt(depart.temps.replace(' mn', ''));
                     next = new Date(d.getTime() + (min * 60000));
                 }
-                $('#list').append('<li>' + (next.getHours() <= 9 ? '0' + next.getHours() : next.getHours())  + ':' + (next.getMinutes() <= 9 ? '0' + next.getMinutes() : next.getMinutes()) + ' (' + depart.temps + ')' + '</li>');
+                $('#list').append('<li><div>' + (next.getHours() <= 9 ? '0' + next.getHours() : next.getHours())  + ':' + (next.getMinutes() <= 9 ? '0' + next.getMinutes() : next.getMinutes()) + '</div><div class="hours">' + depart.temps + '</div></li>');
             })
         })
     };
@@ -68,7 +68,8 @@ $(document).ready(function() {
                 $('#ligne').append(option);
             }
 
-            sortOptions('ligne')
+            sortOptions('ligne');
+            $( "#choix_ligne" ).prop( "disabled", false );
         });
     }
 
@@ -94,7 +95,8 @@ $(document).ready(function() {
                 var option = '<option data-value="' + field.codeLieu + '" value="' + field.libelle + '">';
                 $('#arret').append(option);
             })
-            sortOptions('arret')
+            sortOptions('arret');
+            $( "#choix_arret" ).prop( "disabled", false );
         })
     });
 });

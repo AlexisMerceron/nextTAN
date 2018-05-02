@@ -1,6 +1,8 @@
 body {
     width: 250px;
     height: 500px;
+    font-family: "frutiger_ltlight", Arial, "Helvetica Neue", Helvetica, "Bitstream Vera Sans", sans-serif, Arial, "Helvetica Neue", Helvetica, "Bitstream Vera Sans", sans-serif;
+    border-bottom: 5px solid #31aa4e;
 }
 
 input[type=text], select {
@@ -11,4 +13,56 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 10;
+    margin: 0;
+}
+
+li {
+    padding: 1px;
+}
+
+li div {
+    display: inline-block;
+    width: 50%;
+}
+
+.hours {
+    text-align: right;
+}
+
+label {
+    padding-top: 5px;
+}
+
+.loading {
+  width: 24px;
+  height: 24px;
+  margin: 5px 5px 0 0;
+}
+.loading::before {
+    position: absolute;
+    display: block;
+    content: '';
+    z-index: 12;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #FFF;
+}
+.loading::after {
+    position: absolute;
+    display: block;
+    content: '';
+    z-index: 11;
+    width: 12px;
+    height: 12px;
+    border-radius: 200px 0 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0) 0, rgba(69,154,215,1) 50%, rgba(69,154,215,1) 100%);
+    animation: loading .5s linear infinite;
 }
