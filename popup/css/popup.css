@@ -38,6 +38,10 @@ label {
     display: none;
 }
 
+p {
+    margin-bottom: -5px;
+}
+
 .loading {
   width: 24px;
   height: 24px;
