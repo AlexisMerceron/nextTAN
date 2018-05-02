@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "nextTAN",
-  "version": "0.1",
+  "version": "1.0",
 
   "description": "Donne les horaires des prochains bus de la TAN",
 
