@@ -16,7 +16,7 @@
     "48": "icons/nextTAN-black.svg"
 },
   "permissions": [
-    "http://open_preprod.tan.fr/*",
+    "http://open.tan.fr/*",
     "geolocation"
   ]
 

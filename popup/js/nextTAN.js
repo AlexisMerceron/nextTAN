@@ -17,7 +17,7 @@ $(document).ready(function() {
         var depart = [];
         var d = new Date();
         $('#list').empty()
-        $.getJSON('http://open_preprod.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
+        $.getJSON('http://open.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
             $.each(data, function(i, depart) {
                 var next = d;
                 if (!isNaN(parseFloat(depart.temps))) {
@@ -46,7 +46,7 @@ $(document).ready(function() {
     function getLines(code) {
         var lignes = {};
         $('#ligne').empty()
-        $.getJSON('http://open_preprod.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
+        $.getJSON('http://open.tan.fr/ewp/tempsattente.json/' + code).done(function(data) {
             $.each(data, function(i, ligne) {
                 if (!(ligne.arret.codeArret in lignes)) {
                     var obj = new Object();
@@ -91,7 +91,7 @@ $(document).ready(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
         var lat = ('' + position.coords.latitude).replace('.', ',');
         var long = ('' + position.coords.longitude).replace('.', ',');
-        $.getJSON('http://open_preprod.tan.fr/ewp/arrets.json/' + lat + '/' + long).done(function(data) {
+        $.getJSON('http://open.tan.fr/ewp/arrets.json/' + lat + '/' + long).done(function(data) {
             $.each(data, function(i, field) {
                 var option = '<option data-value="' + field.codeLieu + '" value="' + field.libelle + '">';
                 $('#arret').append(option);
